@@ -39,7 +39,7 @@ export const App = () => {
     const localPhonebook = localStorage.getItem('phonebook');
     if (localPhonebook) setContacts(JSON.parse(localPhonebook));
     if (!localPhonebook) localStorage.setItem('phonebook', JSON.stringify(contacts));
-  }, []);
+  }, [setContacts]);
 
   useEffect(() => {
     contacts.length > 4 && localStorage.setItem('phonebook', JSON.stringify(contacts));
