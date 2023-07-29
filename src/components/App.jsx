@@ -45,7 +45,7 @@ export const App = () => {
     }
     
     !isNeed && localStorage.setItem('phonebook', JSON.stringify(contacts));
-  }, [contacts]);  
+  }, [contacts, isNeed]);  
 
   return (
     <div>
