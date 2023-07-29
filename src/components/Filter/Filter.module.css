@@ -1,0 +1,7 @@
+.filter_section {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: linear-gradient(45deg, rgb(248, 248, 248) 30%, rgb(87, 255, 199)) ;
+    padding: 10px 30px;
+}
