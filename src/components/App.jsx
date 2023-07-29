@@ -38,8 +38,8 @@ export const App = () => {
   useEffect(() => {
     const localPhonebook = localStorage.getItem('phonebook');
     if (localPhonebook) setContacts(JSON.parse(localPhonebook));
-    if (!localPhonebook) localStorage.setItem('phonebook', JSON.stringify(contacts));
-  }, [setContacts]);
+    // if (!localPhonebook) localStorage.setItem('phonebook', JSON.stringify(contacts));
+  }, []);
 
   useEffect(() => {
     contacts.length > 4 && localStorage.setItem('phonebook', JSON.stringify(contacts));
