@@ -35,18 +35,18 @@ export const App = () => {
     setContacts((prevState) => prevState.filter((contact) => contact.id !== id))
   }
 
-  useEffect(() => {
-    const checkLocalStorage = () => {
-      const localPhonebook = localStorage.getItem('phonebook');
-      if (!localPhonebook) localStorage.setItem('phonebook', JSON.stringify(contacts)); 
-      return;
-    }
-    checkLocalStorage();    
-  }, []);
+  // useEffect(() => {
+  //   const checkLocalStorage = () => {
+  //     const localPhonebook = localStorage.getItem('phonebook'); 
+  //     return;
+  //   }
+  //   checkLocalStorage();    
+  // }, []);
 
   useEffect(() => {
     const localPhonebook = localStorage.getItem('phonebook');
     if (localPhonebook) setContacts(JSON.parse(localPhonebook));
+    if (!localPhonebook) localStorage.setItem('phonebook', JSON.stringify(contacts));
     contacts.length > 4 && localStorage.setItem('phonebook', JSON.stringify(contacts));
   }, [contacts])
   
