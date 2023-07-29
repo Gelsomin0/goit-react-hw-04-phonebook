@@ -39,7 +39,8 @@ export const App = () => {
     const checkLocalStorage = () => {
       const localPhonebook = localStorage.getItem('phonebook');
       if (localPhonebook) setContacts(JSON.parse(localPhonebook));
-      if (!localPhonebook) localStorage.setItem('phonebook', JSON.stringify(contacts));  
+      if (!localPhonebook) localStorage.setItem('phonebook', JSON.stringify(contacts)); 
+      return;
     }
     checkLocalStorage();    
   }, []);
