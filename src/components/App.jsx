@@ -36,9 +36,12 @@ export const App = () => {
   }
 
   useEffect(() => {
-    const localPhonebook = localStorage.getItem('phonebook');
-    if (localPhonebook) setContacts(JSON.parse(localPhonebook));
-    // if (!localPhonebook) localStorage.setItem('phonebook', JSON.stringify(contacts));
+    const checkLocalStorage = () => {
+      const localPhonebook = localStorage.getItem('phonebook');
+      if (localPhonebook) setContacts(JSON.parse(localPhonebook));
+      if (!localPhonebook) localStorage.setItem('phonebook', JSON.stringify(contacts));  
+    }
+    checkLocalStorage();    
   }, []);
 
   useEffect(() => {
