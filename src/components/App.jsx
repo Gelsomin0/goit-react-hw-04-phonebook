@@ -11,6 +11,7 @@ export const App = () => {
     {id: 'id-4', name: 'Annie Copeland', number: '227-91-26'},
   ]);
   const [filter, setFilter] = useState('');
+  const [isNeed, setIsNeed] = useState(true);
 
   const getContact = (newContact) => {
     let isExist = false;
@@ -35,21 +36,16 @@ export const App = () => {
     setContacts((prevState) => prevState.filter((contact) => contact.id !== id))
   }
 
-  // useEffect(() => {
-  //   const checkLocalStorage = () => {
-  //     const localPhonebook = localStorage.getItem('phonebook'); 
-  //     return;
-  //   }
-  //   checkLocalStorage();    
-  // }, []);
-
   useEffect(() => {
     const localPhonebook = localStorage.getItem('phonebook');
-    if (localPhonebook) setContacts(JSON.parse(localPhonebook));
-    if (!localPhonebook) localStorage.setItem('phonebook', JSON.stringify(contacts));
-    contacts.length > 4 && localStorage.setItem('phonebook', JSON.stringify(contacts));
-  }, [contacts])
-  
+    if (isNeed) {
+      if (localPhonebook) setContacts(JSON.parse(localPhonebook));
+      if (!localPhonebook) localStorage.setItem('phonebook', JSON.stringify(contacts));  
+      setIsNeed(false);
+    }
+    
+    !isNeed && localStorage.setItem('phonebook', JSON.stringify(contacts));
+  }, [contacts]);  
 
   return (
     <div>
