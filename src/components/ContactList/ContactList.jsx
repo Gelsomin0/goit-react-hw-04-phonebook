@@ -1,4 +1,3 @@
-import { useState } from "react";
 import PropTypes from 'prop-types';
 import css from './ContactList.module.css';
 
@@ -9,22 +8,28 @@ export const ContactList = ({filter, contacts, deleteContact}) => {
                 ? contacts.map(({ id, name, number }) => {
                     return (
                         <li className={css.contacts_list_item} key={id}>
-                            <p className={css.contact_name}>{name}:</p> {number}
-                            <button className={css.contact_delete_button} onClick={() => deleteContact(id)}>Delete</button>
+                            <p className={css.contact_name}>{name}: {number}</p> 
+                            <button
+                                className={css.contact_delete_button}
+                                onClick={() => deleteContact(id)}
+                            >Delete</button>
                         </li> 
                     )
                 })
                 : contacts.map((contact) => {
-                    let item;
+                    // let item;
                     if (contact.name.toLowerCase().includes(filter.toLowerCase())) {
-                        item = (
+                        return (
                             <li className={css.contacts_list_item} key={contact.id}>
-                                <p className={css.contact_name}>{contact.name}:</p> {contact.number}
-                                <button className={css.contact_delete_button} onClick={() => deleteContact(contact.id)}>Delete</button>
+                                <p className={css.contact_name}>{contact.name}: {contact.number}</p> 
+                                <button
+                                    className={css.contact_delete_button}
+                                    onClick={() => deleteContact(contact.id)}
+                                >Delete</button>
                             </li> 
                         )
                     }
-                    return item;
+                    // return item;
                 })
             }
         </ol>
