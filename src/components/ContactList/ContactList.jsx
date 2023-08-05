@@ -17,9 +17,9 @@ export const ContactList = ({filter, contacts, deleteContact}) => {
                     )
                 })
                 : contacts.map((contact) => {
-                    // let item;
+                    let item;
                     if (contact.name.toLowerCase().includes(filter.toLowerCase())) {
-                        return (
+                        item = (
                             <li className={css.contacts_list_item} key={contact.id}>
                                 <p className={css.contact_name}>{contact.name}: {contact.number}</p> 
                                 <button
@@ -29,7 +29,7 @@ export const ContactList = ({filter, contacts, deleteContact}) => {
                             </li> 
                         )
                     }
-                    // return item;
+                    return item;
                 })
             }
         </ol>
